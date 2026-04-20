@@ -1,15 +1,14 @@
 <style>
-ul.recommendations{
+ul.recommendations {
   display: inline-flex;
   flex-wrap: wrap;
   list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-  margin-bottom: 24px;
+  padding: 0;
+  margin: 0 0 24px;
   width: 100%;
 }
 
-ul.recommendations li{
+ul.recommendations li {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -17,47 +16,62 @@ ul.recommendations li{
   padding: 12px 6px;
   border-bottom: 1px solid #E5E7EA;
 }
-ul.recommendations li div div:first-child{
+
+ul.recommendations li:last-child {
+  border-bottom: none;
+}
+
+ul.recommendations li div div:first-child {
   font-weight: 500;
   color: #334650;
 }
-ul.recommendations li div div:last-child{
+
+ul.recommendations li div div:last-child {
   color: #334650;
+}
+
+@media only screen and (max-width: 576px) {
+  ul.recommendations li {
+    width: 100%;
+  }
+  ul.recommendations li:nth-last-child(2) {
+    border-bottom: 1px solid #E5E7EA;
+  }
 }
 </style>
 
-<h1>Book Recommendations</h1>
+<h1 class="section-title">Book Recommendations</h1>
 <ul class="recommendations">
   <li>
-    <img src="/assets/book.webp" />
+    <img src="/assets/book.webp" alt="Book" />
     <div>
       <div>Fundamentals of Software Architecture</div>
       <div>by Mark Richards & Neal Ford</div>
     </div>
   </li>
   <li>
-    <img src="/assets/book.webp" />
+    <img src="/assets/book.webp" alt="Book" />
     <div>
       <div>You don't know JS</div>
       <div>by Kyle Simpson</div>
     </div>
   </li>
   <li>
-    <img src="/assets/book.webp" />
+    <img src="/assets/book.webp" alt="Book" />
     <div>
       <div>Refactoring</div>
       <div>by Martin Fowler</div>
     </div>
   </li>
   <li>
-    <img src="/assets/book.webp" />
+    <img src="/assets/book.webp" alt="Book" />
     <div>
       <div>Designing Data-Intensive Applications</div>
       <div>by Martin Kleppmann</div>
     </div>
   </li>
-  <li style="border-bottom: none;">
-    <img src="/assets/book.webp" />
+  <li>
+    <img src="/assets/book.webp" alt="Book" />
     <div>
       <div>Design Patterns</div>
       <div>by Gang of Four</div>

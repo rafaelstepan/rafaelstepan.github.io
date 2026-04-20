@@ -1,3 +1,4 @@
+/* ===== Fonts ===== */
 @font-face {
   font-family: "Poppins";
   src: url("/assets/fonts/Poppins-Light.ttf") format("truetype");
@@ -26,16 +27,33 @@
   font-style: normal;
 }
 
+/* ===== Variables ===== */
+:root {
+  --color-dark: #334650;
+  --color-mid: #586375;
+  --color-muted: #979BA6;
+  --color-border: #E5E7EA;
+  --color-accent: #3943B7;
+  --color-bg: #dbdfe2;
+  --font-body: 14px;
+  --font-small: 12px;
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   color: #242424;
   font-style: normal;
-  font-size: 14px;
+  font-size: var(--font-body);
   font-weight: 400;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -43,11 +61,10 @@ h2,
 h3,
 h4,
 h5 {
-  margin-block: auto;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-weight: 500;
-  color: #334650;
+  color: var(--color-dark);
 }
 
 h1 {
@@ -62,52 +79,84 @@ h3 {
 }
 
 p {
-  margin-block: auto;
+  margin: 0;
   line-height: 24px;
-  color: #334650;
+  color: var(--color-dark);
 }
 
+/* ===== Section Layout ===== */
+.section-summary {
+  padding: 32px 0 24px;
+}
+
+.section-portfolio {
+  padding: 0 0 24px;
+}
+
+.section-content {
+  padding: 0 0 8px;
+}
+
+.site-footer {
+  padding: 48px 0 64px;
+  text-align: center;
+}
+
+/* ===== Section Headings ===== */
+.section-title {
+  margin-bottom: 16px;
+  line-height: 30px;
+}
+
+/* ===== Technology Tags ===== */
 ul.technologies {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
+
 ul.technologies li {
   position: relative;
   list-style-type: none;
   height: 16px;
 }
-ul.technologies li:before {
+
+ul.technologies li::before {
   content: attr(data-text);
   position: absolute;
   top: -22px;
   left: calc(-100% - 8px);
-  padding: 0px 4px;
+  padding: 0 4px;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.75);
   color: #fff;
   text-align: center;
-  font-size: 12px;
+  font-size: var(--font-small);
   display: none;
 }
-ul.technologies li:hover:before {
+
+ul.technologies li:hover::before {
   display: block;
 }
 
+/* ===== Button ===== */
 .button {
   display: inline-block;
-  border: 1px solid #334650;
+  border: 1px solid var(--color-dark);
   border-radius: 4px;
-  padding: 4px 12px;
+  padding: 8px 20px;
   color: #fff;
   text-decoration: none;
-  font-size: 12px;
-  background: #334650;
+  font-size: var(--font-small);
+  background: var(--color-dark);
+  transition: background 0.2s ease, color 0.2s ease;
+  font-family: "Poppins", sans-serif;
 }
+
 .button:hover {
   background: #fff;
-  color: #334650;
+  color: var(--color-dark);
 }

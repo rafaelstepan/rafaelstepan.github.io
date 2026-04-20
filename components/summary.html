@@ -1,8 +1,4 @@
 <style>
-.avatar {
-  position: relative;
-}
-
 .avatar img {
   display: block;
   width: 100%;
@@ -13,54 +9,55 @@
 @media only screen and (max-width: 768px) {
   .avatar img {
     max-width: 164px;
+    margin-bottom: 16px;
   }
 }
 
-.details{
+.details {
   display: inline-flex;
   justify-content: space-between;
   flex-direction: row;
   width: 100%;
-  margin: 8px 0px;
-  padding: 0px;
+  margin: 12px 0;
+  padding: 0;
   list-style: none;
   line-height: 16px;
   font-size: 12px;
   border-top: 1px solid #E5E7EA;
   border-bottom: 1px solid #E5E7EA;
 }
-.details li:first-child{
-  padding-left: 0px;
+
+.details li:first-child {
+  padding-left: 0;
 }
-.details li:not(:first-child){
+
+.details li:not(:first-child) {
   border-left: 1px solid #E5E7EA;
 }
-.details li{
+
+.details li {
   padding: 12px;
 }
-.details li p{
+
+.details li p {
   line-height: 16px;
   color: #586375;
 }
-.details li h3{
+
+.details li h3 {
   font-weight: 400;
-}
-.hr{
-  border: none;
-  border-bottom: 1px solid #E5E7EA;
-  margin: 12px 0px;
 }
 
 @media only screen and (max-width: 680px) {
   .details {
     flex-direction: column;
   }
-  .details li{
+  .details li {
     border-left: none !important;
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
-  .details li:not(:last-child){
+  .details li:not(:last-child) {
     border-bottom: 1px solid #E5E7EA;
   }
 }
@@ -69,13 +66,13 @@
 <div class="row">
   <div class="col-lg-3">
     <div class="avatar">
-      <img src="/assets/avatar2.webp" />
+      <img src="/assets/avatar2.webp" alt="Rafael Stepan" />
     </div>
   </div>
   <div class="col-lg-9">
     <h1>Rafael Stepan</h1>
     <p>Software Engineer</p>
-    
+
     <ul class="details">
       <li>
         <p>Location</p>
@@ -90,10 +87,10 @@
         <h3>stepanrafael@setupkit.com</h3>
       </li>
     </ul>
-    
+
     <p class="description">
       Since 2016, I've worked on developing and implementing full-stack software solutions across various projects.
-      I’ve been involved in projects ranging from maintaining legacy software to leading the development of new applications.
+      I've been involved in projects ranging from maintaining legacy software to leading the development of new applications.
       I've also founded an online web design agency and launched my own startup focused on team collaboration.
       Most of my work consists of translating concepts into actionable development plans, designing software architecture and <span style="white-space: nowrap;">user-interfaces</span>, and driving effective development.
     </p>
