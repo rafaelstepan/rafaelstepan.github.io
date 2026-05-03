@@ -1,0 +1,103 @@
+<style>
+.feedback-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.feedback-card {
+  flex: 1 1 calc(50% - 6px);
+  border: 1px solid #E5E7EA;
+  border-radius: 6px;
+  padding: 14px 16px;
+  box-sizing: border-box;
+}
+.feedback-card-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.feedback-card-stars svg {
+  color: #f5a623;
+}
+.feedback-card-quote {
+  font-size: 13px;
+  color: #586375;
+  line-height: 22px;
+  margin-top: 10px;
+}
+.feedback-card-meta {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #E5E7EA;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.feedback-card-client {
+  font-size: 12px;
+  font-weight: 500;
+  color: #334650;
+}
+.feedback-card-project {
+  font-size: 11px;
+  color: #979BA6;
+}
+@media only screen and (max-width: 576px) {
+  .feedback-card {
+    flex: 1 1 100%;
+  }
+}
+</style>
+
+<div class="collapsible-header" onclick="toggleSection(this)">
+  <h1 class="section-title">Client Feedback</h1>
+  <svg class="collapse-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+<div class="collapsible-body">
+  <div class="feedback-grid"></div>
+</div>
+
+<script>
+(function() {
+  const starSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+  const grid = document.querySelector('.feedback-grid');
+
+  (window.jobsData || []).forEach(function(job) {
+    if (!job.feedbacks) return;
+    job.feedbacks.forEach(function(fb) {
+      const card = document.createElement('div');
+      card.classList.add('feedback-card');
+
+      const starsDiv = document.createElement('div');
+      starsDiv.classList.add('feedback-card-stars');
+      starsDiv.innerHTML = starSvg.repeat(fb.rating);
+
+      const metaDiv = document.createElement('div');
+      metaDiv.classList.add('feedback-card-meta');
+
+      const clientSpan = document.createElement('span');
+      clientSpan.classList.add('feedback-card-client');
+      clientSpan.textContent = fb.clientName;
+
+      const projectSpan = document.createElement('span');
+      projectSpan.classList.add('feedback-card-project');
+      projectSpan.textContent = job.subtitle;
+
+      metaDiv.appendChild(clientSpan);
+      metaDiv.appendChild(projectSpan);
+
+      card.appendChild(starsDiv);
+
+      const quoteP = document.createElement('p');
+      quoteP.classList.add('feedback-card-quote');
+      quoteP.textContent = fb.feedback || 'Left a review without a description.';
+      if (!fb.feedback) { quoteP.style.fontSize = '11px'; quoteP.style.opacity = '0.5'; }
+      card.appendChild(quoteP);
+
+      card.appendChild(metaDiv);
+      grid.appendChild(card);
+    });
+  });
+})();
+</script>

@@ -1,343 +1,300 @@
 <style>
 .project {
+  position: relative;
   display: inline-flex;
   flex-direction: column-reverse;
   align-items: flex-start;
   justify-content: space-between;
   background-color: #fff;
   border-radius: 4px;
+  border: 1px solid #E5E7EA;
   gap: 12px;
   width: 100%;
   height: 100%;
   padding: 12px;
-  box-shadow: 1px 1px 6px 0px rgba(132, 139, 158, 0.6);
-  transition: box-shadow 0.2s ease;
   box-sizing: border-box;
+  transition: border-color 0.2s ease;
+  overflow: hidden;
 }
 
 .project:hover {
-  box-shadow: 2px 2px 10px 0px rgba(132, 139, 158, 0.8);
+  border-color: #979BA6;
+}
+
+.project::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23979BA6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
 }
 
 .project img {
-  max-height: 32px;
+  max-height: 28px;
+  max-width: 80%;
+  object-fit: contain;
+  object-position: left;
 }
 
 .project p {
   color: #586375;
-  font-size: 12px;
-  line-height: 14px;
-  margin-top: 4px;
+  font-size: 11px;
+  line-height: 16px;
+  margin-top: 3px;
 }
 
-.portfolio-content {
-  background: #dbdfe2;
-  padding: 20px 54px 24px;
-  border-radius: 12px;
-  margin-bottom: 24px;
-}
-
-.portfolio-content h1 {
-  margin: 0;
-  line-height: 24px;
-}
-
-.portfolio-content > p {
-  margin: 0 0 16px;
-}
-
-/* ===== Carousel ===== */
-.carousel-outer {
-  position: relative;
-}
-
-.carousel-wrapper {
-  overflow: hidden;
-}
-
-.carousel-track {
+.portfolio-grid {
   display: flex;
-  transition: transform 0.3s ease;
-  will-change: transform;
+  flex-wrap: wrap;
+  margin: 16px -8px 0;
 }
 
-.carousel-slide {
-  flex-shrink: 0;
-  height: 112px;
-  padding: 4px 12px;
+.portfolio-item {
+  width: 33.333%;
+  padding: 0 8px 16px;
   box-sizing: border-box;
   cursor: pointer;
+  height: 130px;
 }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 0;
-  transition: opacity 0.2s ease;
+.portfolio-item-extra {
+  display: none;
 }
 
-.carousel-btn:disabled {
-  opacity: 0.25;
-  cursor: default;
+.project-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #C8CDD4;
+  background: transparent;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  color: #586375;
+  font-size: 13px;
+  font-weight: 400;
+  gap: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.carousel-btn.prev {
-  left: -30px;
+.project-more:hover {
+  border-color: #979BA6;
+  color: #334650;
 }
 
-.carousel-btn.next {
-  right: -30px;
+.project-more svg {
+  flex-shrink: 0;
 }
 
 @media only screen and (max-width: 768px) {
-  .portfolio-content {
-    padding: 20px 40px 24px;
+  .portfolio-item {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .portfolio-item {
+    width: 100%;
   }
 }
 </style>
 
-<div class="row">
-  <div class="col-lg-12">
-    <div class="portfolio-content">
-      <h1>Projects Showcase</h1>
-      <p>Explore each project to uncover my technical expertise, creativity, and commitment to excellence.</p>
+<h1 class="section-title">Projects Showcase</h1>
+<p style="font-size: 13px; color: #586375; margin-bottom: 4px;">Explore each project to uncover my technical expertise, creativity, and commitment to excellence.</p>
 
-      <div class="carousel-outer">
-        <button class="carousel-btn prev" aria-label="Previous">
-          <img src="/assets/back-arrow.webp" alt="Previous" />
-        </button>
+<div class="portfolio-grid">
 
-        <div class="carousel-wrapper">
-          <div class="carousel-track">
+  <div class="portfolio-item" onclick="openGallery('synexio')">
+    <div class="project">
+      <div>
+        <h3>Synexio</h3>
+        <p>Front-End Engineering</p>
+      </div>
+      <img src="/assets/client-logos/synexio.webp" alt="Synexio" />
+    </div>
+  </div>
 
-            <div class="carousel-slide" onclick="openGallery('synexio')">
-              <div class="project">
-                <div>
-                  <h3>Synexio</h3>
-                  <p>Front-End Engineering</p>
-                </div>
-                <img src="/assets/client-logos/synexio.webp" alt="Synexio" />
-              </div>
-            </div>
+  <div class="portfolio-item" onclick="openGallery('netsheet')">
+    <div class="project">
+      <div>
+        <h3>Netsheet</h3>
+        <p>Full-Stack Engineering</p>
+      </div>
+      <img src="/assets/client-logos/netsheet.webp" alt="Netsheet" />
+    </div>
+  </div>
 
-            <div class="carousel-slide" onclick="openGallery('netsheet')">
-              <div class="project">
-                <div>
-                  <h3>Netsheet</h3>
-                  <p>Full-Stack Engineering</p>
-                </div>
-                <img src="/assets/client-logos/netsheet.webp" alt="Netsheet" />
-              </div>
-            </div>
+  <div class="portfolio-item" onclick="openGallery('inombra')">
+    <div class="project">
+      <div>
+        <h3>Inombra</h3>
+        <p>Front-End Engineering & Design</p>
+      </div>
+      <img src="/assets/client-logos/inombra.webp" alt="Inombra" />
+    </div>
+  </div>
 
-            <div class="carousel-slide" onclick="openGallery('inombra')">
-              <div class="project">
-                <div>
-                  <h3>Inombra</h3>
-                  <p>Front-End Engineering & Design</p>
-                </div>
-                <img src="/assets/client-logos/inombra.webp" alt="Inombra" />
-              </div>
-            </div>
+  <div class="portfolio-item" onclick="openGallery('modpack')">
+    <div class="project">
+      <div>
+        <h3>Modpack</h3>
+        <p>Front-End Engineering</p>
+      </div>
+      <img src="/assets/client-logos/modpack.webp" alt="Modpack" style="margin-left: -8px;" />
+    </div>
+  </div>
 
-            <div class="carousel-slide" onclick="openGallery('modpack')">
-              <div class="project">
-                <div>
-                  <h3>Modpack</h3>
-                  <p>Front-End Engineering</p>
-                </div>
-                <img src="/assets/client-logos/modpack.webp" alt="Modpack" style="margin-left: -8px;" />
-              </div>
-            </div>
+  <div class="portfolio-item" onclick="openGallery('setupkit')">
+    <div class="project">
+      <div>
+        <h3>Setupkit</h3>
+        <p>Founder</p>
+      </div>
+      <img src="/assets/client-logos/setupkit.webp" alt="Setupkit" style="max-width: 22px;" />
+    </div>
+  </div>
 
-            <div class="carousel-slide" onclick="openGallery('setupkit')">
-              <div class="project">
-                <div>
-                  <h3>Setupkit</h3>
-                  <p>Founder</p>
-                </div>
-                <img src="/assets/client-logos/setupkit.webp" alt="Setupkit" style="max-width: 22px;" />
-              </div>
-            </div>
+  <div class="portfolio-item" id="portfolio-view-more" onclick="expandPortfolio()">
+    <div class="project-more">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      View all
+    </div>
+  </div>
 
-            <div class="carousel-slide" onclick="openGallery('spinoffintelligence')">
-              <div class="project">
-                <div>
-                  <h3>Spin-off Intelligence</h3>
-                  <p>Full-Stack Engineering & Design</p>
-                </div>
-                <div style="color: #334650; letter-spacing: 0.6px;">
-                  <b>SPIN-OFF</b> INTELLIGENCE
-                </div>
-              </div>
-            </div>
-
-            <div class="carousel-slide" onclick="openGallery('zetasafe')">
-              <div class="project">
-                <div>
-                  <h3>Zetasafe</h3>
-                  <p>Front-End Engineering</p>
-                </div>
-                <img src="/assets/client-logos/zetasafe.webp" alt="Zetasafe" style="max-width: 32px;" />
-              </div>
-            </div>
-
-            <div class="carousel-slide" onclick="openGallery('equeum')">
-              <div class="project">
-                <div>
-                  <h3>Equeum</h3>
-                  <p>API Documenting</p>
-                </div>
-                <img src="/assets/client-logos/equeum.webp" alt="Equeum" style="max-width: 84px;" />
-              </div>
-            </div>
-
-            <div class="carousel-slide" onclick="openGallery('seeqchat')">
-              <div class="project">
-                <div>
-                  <h3>SeeQchat</h3>
-                  <p>Full-Stack Engineering & Design</p>
-                </div>
-                <img src="/assets/client-logos/seeqchat.webp" alt="SeeQchat" style="max-width: 27px;" />
-              </div>
-            </div>
-
-            <div class="carousel-slide" onclick="openGallery('upick')">
-              <div class="project">
-                <div>
-                  <h3>Upick</h3>
-                  <p>Full-Stack Engineering & Design</p>
-                </div>
-                <img src="/assets/client-logos/upick.webp" alt="Upick" style="max-width: 64px;" />
-              </div>
-            </div>
-
-            <div class="carousel-slide" onclick="openGallery('agrostoc')">
-              <div class="project">
-                <div>
-                  <h3>Agrostoc</h3>
-                  <p>Full-Stack Engineering & Design</p>
-                </div>
-                <img src="/assets/client-logos/agrostoc.webp" alt="Agrostoc" />
-              </div>
-            </div>
-
-            <div class="carousel-slide" onclick="openGallery('everestbikeshop')">
-              <div class="project">
-                <div>
-                  <h3>EverestBikeShop</h3>
-                  <p>Full-Stack Engineering & Design</p>
-                </div>
-                <img src="/assets/client-logos/everestbikeshop.webp" alt="EverestBikeShop" style="max-width: 42px;" />
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <button class="carousel-btn next" aria-label="Next">
-          <img src="/assets/next-arrow.webp" alt="Next" />
-        </button>
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('spinoffintelligence')">
+    <div class="project">
+      <div>
+        <h3>Spin-off Intelligence</h3>
+        <p>Full-Stack Engineering & Design</p>
+      </div>
+      <div style="line-height: 1.4;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 2.5px; color: #334650;">SPIN-OFF</div>
+        <div style="font-size: 9px; font-weight: 400; letter-spacing: 4px; color: #979BA6;">INTELLIGENCE</div>
       </div>
     </div>
+  </div>
+
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('zetasafe')">
+    <div class="project">
+      <div>
+        <h3>Zetasafe</h3>
+        <p>Front-End Engineering</p>
+      </div>
+      <img src="/assets/client-logos/zetasafe.webp" alt="Zetasafe" style="max-width: 32px;" />
+    </div>
+  </div>
+
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('equeum')">
+    <div class="project">
+      <div>
+        <h3>Equeum</h3>
+        <p>API Documenting</p>
+      </div>
+      <img src="/assets/client-logos/equeum.webp" alt="Equeum" style="max-width: 84px;" />
+    </div>
+  </div>
+
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('seeqchat')">
+    <div class="project">
+      <div>
+        <h3>SeeQchat</h3>
+        <p>Full-Stack Engineering & Design</p>
+      </div>
+      <img src="/assets/client-logos/seeqchat.webp" alt="SeeQchat" style="max-width: 27px;" />
+    </div>
+  </div>
+
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('upick')">
+    <div class="project">
+      <div>
+        <h3>Upick</h3>
+        <p>Full-Stack Engineering & Design</p>
+      </div>
+      <img src="/assets/client-logos/upick.webp" alt="Upick" style="max-width: 64px;" />
+    </div>
+  </div>
+
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('agrostoc')">
+    <div class="project">
+      <div>
+        <h3>Agrostoc</h3>
+        <p>Full-Stack Engineering & Design</p>
+      </div>
+      <img src="/assets/client-logos/agrostoc.webp" alt="Agrostoc" />
+    </div>
+  </div>
+
+  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('everestbikeshop')">
+    <div class="project">
+      <div>
+        <h3>EverestBikeShop</h3>
+        <p>Full-Stack Engineering & Design</p>
+      </div>
+      <img src="/assets/client-logos/everestbikeshop.webp" alt="EverestBikeShop" style="max-width: 42px;" />
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top: 24px;">
+  <p style="font-size: 11px; line-height: 16px; color: #979BA6; text-transform: uppercase; letter-spacing: 0.4px;">Expertise</p>
+  <div class="expertise-tags" style="margin-top: 10px;">
+    <span>Front-End Engineering</span>
+    <span>Full-Stack Engineering</span>
+    <span>Software Architecture</span>
+    <span>UI/UX Design</span>
+    <span>JavaScript</span>
+    <span>TypeScript</span>
+    <span>Angular</span>
+    <span>RxJS</span>
+    <span>Node.js</span>
+    <span>D3.js</span>
+    <span>MySQL</span>
+    <span>Figma</span>
+    <span>NgRx</span>
+    <span>Nx</span>
+    <span>Git</span>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 11px; line-height: 16px; color: #979BA6; text-transform: uppercase; letter-spacing: 0.4px;">Focus Areas</p>
+  <div class="expertise-tags" style="margin-top: 10px;">
+    <span>SaaS Products</span>
+    <span>Enterprise Applications</span>
+    <span>Banking & Fintech</span>
+    <span>IoT & Dashboards</span>
+    <span>Data Visualization</span>
+    <span>Real-time Systems</span>
+    <span>Logistics Systems</span>
+    <span>E-commerce</span>
+    <span>Network Graphs</span>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 11px; line-height: 16px; color: #979BA6; text-transform: uppercase; letter-spacing: 0.4px;">Methodologies</p>
+  <div class="expertise-tags" style="margin-top: 10px;">
+    <span>Agile / Scrum</span>
+    <span>Component Architecture</span>
+    <span>REST APIs</span>
+    <span>WebSockets</span>
+    <span>CI/CD</span>
+    <span>Responsive Design</span>
+    <span>Third-party Integrations</span>
+    <span>Software Design Patterns</span>
   </div>
 </div>
 
 <script>
-  (function() {
-    const outer   = document.querySelector('.carousel-outer');
-    const wrapper = outer.querySelector('.carousel-wrapper');
-    const track   = outer.querySelector('.carousel-track');
-    const slides  = Array.from(track.querySelectorAll('.carousel-slide'));
-    const prevBtn = outer.querySelector('.carousel-btn.prev');
-    const nextBtn = outer.querySelector('.carousel-btn.next');
-    let currentIndex = 0;
-
-    function getSlidesToShow() {
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 992) return 3;
-      return 4;
-    }
-
-    function getSlideWidth() {
-      return wrapper.offsetWidth / getSlidesToShow();
-    }
-
-    function update() {
-      const slidesToShow = getSlidesToShow();
-      const slideWidth   = getSlideWidth();
-      const maxIndex     = slides.length - slidesToShow;
-
-      currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
-
-      slides.forEach(function(slide) {
-        slide.style.width = slideWidth + 'px';
-      });
-
-      track.style.transform = 'translateX(' + (-currentIndex * slideWidth) + 'px)';
-
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= maxIndex;
-    }
-
-    prevBtn.addEventListener('click', function() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        update();
-      }
+  window.expandPortfolio = function() {
+    document.querySelectorAll('.portfolio-item-extra').forEach(function(el) {
+      el.style.display = 'block';
     });
-
-    nextBtn.addEventListener('click', function() {
-      if (currentIndex < slides.length - getSlidesToShow()) {
-        currentIndex++;
-        update();
-      }
-    });
-
-    // Swipe support
-    let touchStartX = 0;
-    let touchDeltaX = 0;
-    let isSwiping   = false;
-
-    wrapper.addEventListener('touchstart', function(e) {
-      touchStartX = e.touches[0].clientX;
-      touchDeltaX = 0;
-      isSwiping   = true;
-      track.style.transition = 'none';
-    }, { passive: true });
-
-    wrapper.addEventListener('touchmove', function(e) {
-      if (!isSwiping) return;
-      touchDeltaX = e.touches[0].clientX - touchStartX;
-      const base = -currentIndex * getSlideWidth();
-      track.style.transform = 'translateX(' + (base + touchDeltaX) + 'px)';
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', function() {
-      if (!isSwiping) return;
-      isSwiping = false;
-      track.style.transition = '';
-
-      const threshold = getSlideWidth() * 0.25;
-      const maxIndex  = slides.length - getSlidesToShow();
-
-      if (touchDeltaX < -threshold && currentIndex < maxIndex) {
-        currentIndex++;
-      } else if (touchDeltaX > threshold && currentIndex > 0) {
-        currentIndex--;
-      }
-
-      update();
-    });
-
-    window.addEventListener('resize', update);
-    update();
-  })();
+    document.getElementById('portfolio-view-more').style.display = 'none';
+  };
 
   window.gallery = {
     "synexio": [
@@ -429,23 +386,23 @@
     ],
     "setupkit": [
       { "src": "https://www.youtube.com/embed/B84RGDGASMc" },
-      { "src": "/assets/portofolio/setupkit/homepage.webp",                    "thumb": "/assets/portofolio/setupkit/homepage.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-homepage.webp",        "thumb": "/assets/portofolio/setupkit/setupkit-v3-homepage.webp" },
-      { "src": "/assets/portofolio/setupkit/login.webp",                       "thumb": "/assets/portofolio/setupkit/login.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-signin.webp",          "thumb": "/assets/portofolio/setupkit/setupkit-v3-signin.webp" },
-      { "src": "/assets/portofolio/setupkit/file-hosting.webp",                "thumb": "/assets/portofolio/setupkit/file-hosting.webp" },
-      { "src": "/assets/portofolio/setupkit/file-hosting-2.webp",              "thumb": "/assets/portofolio/setupkit/file-hosting-2.webp" },
-      { "src": "/assets/portofolio/setupkit/messenger.webp",                   "thumb": "/assets/portofolio/setupkit/messenger.webp" },
-      { "src": "/assets/portofolio/setupkit/messenger-2.webp",                 "thumb": "/assets/portofolio/setupkit/messenger-2.webp" },
-      { "src": "/assets/portofolio/setupkit/tickets.webp",                     "thumb": "/assets/portofolio/setupkit/tickets.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-dashboards.webp",      "thumb": "/assets/portofolio/setupkit/setupkit-v3-dashboards.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-filehosting.webp",     "thumb": "/assets/portofolio/setupkit/setupkit-v3-filehosting.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-forums.webp",          "thumb": "/assets/portofolio/setupkit/setupkit-v3-forums.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-messenger.webp",       "thumb": "/assets/portofolio/setupkit/setupkit-v3-messenger.webp" },
+      { "src": "/assets/portofolio/setupkit/homepage.webp",                     "thumb": "/assets/portofolio/setupkit/homepage.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-homepage.webp",         "thumb": "/assets/portofolio/setupkit/setupkit-v3-homepage.webp" },
+      { "src": "/assets/portofolio/setupkit/login.webp",                        "thumb": "/assets/portofolio/setupkit/login.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-signin.webp",           "thumb": "/assets/portofolio/setupkit/setupkit-v3-signin.webp" },
+      { "src": "/assets/portofolio/setupkit/file-hosting.webp",                 "thumb": "/assets/portofolio/setupkit/file-hosting.webp" },
+      { "src": "/assets/portofolio/setupkit/file-hosting-2.webp",               "thumb": "/assets/portofolio/setupkit/file-hosting-2.webp" },
+      { "src": "/assets/portofolio/setupkit/messenger.webp",                    "thumb": "/assets/portofolio/setupkit/messenger.webp" },
+      { "src": "/assets/portofolio/setupkit/messenger-2.webp",                  "thumb": "/assets/portofolio/setupkit/messenger-2.webp" },
+      { "src": "/assets/portofolio/setupkit/tickets.webp",                      "thumb": "/assets/portofolio/setupkit/tickets.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-dashboards.webp",       "thumb": "/assets/portofolio/setupkit/setupkit-v3-dashboards.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-filehosting.webp",      "thumb": "/assets/portofolio/setupkit/setupkit-v3-filehosting.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-forums.webp",           "thumb": "/assets/portofolio/setupkit/setupkit-v3-forums.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-messenger.webp",        "thumb": "/assets/portofolio/setupkit/setupkit-v3-messenger.webp" },
       { "src": "/assets/portofolio/setupkit/setupkit-v3-projectmanagement.webp","thumb": "/assets/portofolio/setupkit/setupkit-v3-projectmanagement.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-teammanagement.webp",  "thumb": "/assets/portofolio/setupkit/setupkit-v3-teammanagement.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-tickets.webp",         "thumb": "/assets/portofolio/setupkit/setupkit-v3-tickets.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-timetracker.webp",     "thumb": "/assets/portofolio/setupkit/setupkit-v3-timetracker.webp" }
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-teammanagement.webp",   "thumb": "/assets/portofolio/setupkit/setupkit-v3-teammanagement.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-tickets.webp",          "thumb": "/assets/portofolio/setupkit/setupkit-v3-tickets.webp" },
+      { "src": "/assets/portofolio/setupkit/setupkit-v3-timetracker.webp",      "thumb": "/assets/portofolio/setupkit/setupkit-v3-timetracker.webp" }
     ]
   };
 </script>

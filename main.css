@@ -37,6 +37,7 @@
   --color-bg: #dbdfe2;
   --font-body: 14px;
   --font-small: 12px;
+  --font-xs: 11px;
 }
 
 /* ===== Base ===== */
@@ -69,43 +70,49 @@ h5 {
 
 h1 {
   font-size: 24px;
-  line-height: 38px;
+  line-height: 30px;
 }
 
 h3 {
   font-size: 14px;
-  line-height: 16px;
+  line-height: 20px;
   font-weight: 500;
 }
 
 p {
   margin: 0;
-  line-height: 24px;
+  line-height: 26px;
   color: var(--color-dark);
 }
 
 /* ===== Section Layout ===== */
 .section-summary {
-  padding: 32px 0 24px;
+  padding: 40px 0 32px;
 }
 
 .section-portfolio {
-  padding: 0 0 24px;
+  padding: 0 0 32px;
 }
 
 .section-content {
-  padding: 0 0 8px;
+  padding: 0 0 24px;
 }
 
 .site-footer {
-  padding: 48px 0 64px;
+  padding: 56px 0 72px;
   text-align: center;
+}
+
+.button + .button {
+  margin-left: 8px;
 }
 
 /* ===== Section Headings ===== */
 .section-title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
   margin-bottom: 16px;
-  line-height: 30px;
 }
 
 /* ===== Technology Tags ===== */
@@ -142,21 +149,60 @@ ul.technologies li:hover::before {
   display: block;
 }
 
+/* ===== Collapsible ===== */
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+
+.collapsible-header .section-title {
+  margin-bottom: 0;
+}
+
+.collapse-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--color-muted);
+  transition: transform 0.25s ease;
+}
+
+.collapse-arrow.is-open {
+  transform: rotate(180deg);
+}
+
+.collapsible-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
 /* ===== Button ===== */
 .button {
   display: inline-block;
   border: 1px solid var(--color-dark);
   border-radius: 4px;
   padding: 8px 20px;
-  color: #fff;
+  color: var(--color-dark);
   text-decoration: none;
   font-size: var(--font-small);
-  background: var(--color-dark);
+  background: transparent;
   transition: background 0.2s ease, color 0.2s ease;
   font-family: "Poppins", sans-serif;
+  cursor: pointer;
 }
 
 .button:hover {
-  background: #fff;
-  color: var(--color-dark);
+  background: var(--color-dark);
+  color: #fff;
+}
+
+.button-sm {
+  padding: 4px 10px;
+  font-size: var(--font-xs);
 }

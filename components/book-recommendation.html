@@ -4,7 +4,7 @@ ul.recommendations {
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 16px 0 0;
   width: 100%;
 }
 
@@ -22,12 +22,15 @@ ul.recommendations li:last-child {
 }
 
 ul.recommendations li div div:first-child {
+  font-size: 14px;
   font-weight: 500;
   color: #334650;
 }
 
 ul.recommendations li div div:last-child {
-  color: #334650;
+  font-size: 13px;
+  color: #586375;
+  margin-top: 2px;
 }
 
 @media only screen and (max-width: 576px) {
@@ -40,41 +43,46 @@ ul.recommendations li div div:last-child {
 }
 </style>
 
-<h1 class="section-title">Book Recommendations</h1>
-<ul class="recommendations">
-  <li>
-    <img src="/assets/book.webp" alt="Book" />
-    <div>
-      <div>Fundamentals of Software Architecture</div>
-      <div>by Mark Richards & Neal Ford</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/book.webp" alt="Book" />
-    <div>
-      <div>You don't know JS</div>
-      <div>by Kyle Simpson</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/book.webp" alt="Book" />
-    <div>
-      <div>Refactoring</div>
-      <div>by Martin Fowler</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/book.webp" alt="Book" />
-    <div>
-      <div>Designing Data-Intensive Applications</div>
-      <div>by Martin Kleppmann</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/book.webp" alt="Book" />
-    <div>
-      <div>Design Patterns</div>
-      <div>by Gang of Four</div>
-    </div>
-  </li>
-</ul>
+<div class="collapsible-header" onclick="toggleSection(this)">
+  <h1 class="section-title">Book Recommendations</h1>
+  <svg class="collapse-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+<div class="collapsible-body">
+  <ul class="recommendations">
+    <li>
+      <img src="/assets/book.webp" alt="Book" />
+      <div>
+        <div>Fundamentals of Software Architecture</div>
+        <div>by Mark Richards & Neal Ford</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/book.webp" alt="Book" />
+      <div>
+        <div>You don't know JS</div>
+        <div>by Kyle Simpson</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/book.webp" alt="Book" />
+      <div>
+        <div>Refactoring</div>
+        <div>by Martin Fowler</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/book.webp" alt="Book" />
+      <div>
+        <div>Designing Data-Intensive Applications</div>
+        <div>by Martin Kleppmann</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/book.webp" alt="Book" />
+      <div>
+        <div>Design Patterns</div>
+        <div>by Gang of Four</div>
+      </div>
+    </li>
+  </ul>
+</div>

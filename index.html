@@ -1,24 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4PB4PWEQP2"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4PB4PWEQP2"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-4PB4PWEQP2');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-4PB4PWEQP2");
     </script>
 
-    <title>Rafael Stepan</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Stepan — Software Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="cache-control" content="no-cache" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
-    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <meta
+      name="description"
+      content="Explore the profile of a Software Engineer with over 10 years of experience building full-stack products across various industries. Real projects, real clients, real results."
+    />
+    <meta name="author" content="Rafael Stepan" />
+    <meta name="robots" content="index, follow" />
 
-    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Rafael Stepan - Software Engineer" />
+    <meta
+      property="og:description"
+      content="Explore the profile of a Software Engineer with over 10 years of experience building full-stack products across various industries. Real projects, real clients, real results."
+    />
+    <meta property="og:image" content="/assets/avatar2.webp" />
+    <meta property="og:url" content="https://rafaelstepan.github.io" />
+    <meta property="og:site_name" content="Rafael Stepan" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rafael Stepan - Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Explore the profile of a Software Engineer with over 10 years of experience building full-stack products across various industries. Real projects, real clients, real results."
+    />
+    <meta name="twitter:image" content="/assets/avatar2.webp" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+
+    <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="/assets/libraries/fancybox.min.css" />
     <link rel="stylesheet" href="/assets/libraries/bootstrap-grid.min.css" />
 
@@ -35,7 +79,12 @@
 
       <section class="section-portfolio">
         <div class="container">
-          <div w3-include-html="components/portofolio.html"></div>
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-9">
+              <div w3-include-html="components/portofolio.html"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -45,6 +94,17 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-9">
               <div w3-include-html="components/employment-history.html"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-9">
+              <div w3-include-html="components/client-feedback.html"></div>
             </div>
           </div>
         </div>
@@ -88,7 +148,9 @@
           <div class="row">
             <div class="col-lg-3"></div>
             <div class="col-lg-9">
-              <div w3-include-html="components/extra-curricular-activities.html"></div>
+              <div
+                w3-include-html="components/extra-curricular-activities.html"
+              ></div>
             </div>
           </div>
         </div>
@@ -102,10 +164,19 @@
     </main>
 
     <script>
+      function toggleSection(header) {
+        const body = header.nextElementSibling;
+        const arrow = header.querySelector(".collapse-arrow");
+        const isOpen = !!body.style.maxHeight;
+
+        body.style.maxHeight = isOpen ? null : body.scrollHeight + "px";
+        arrow.classList.toggle("is-open", !isOpen);
+      }
+
       function openGallery(project) {
         $.fancybox.open(window.gallery[project], {
           loop: true,
-          thumbs: { autoStart: true }
+          thumbs: { autoStart: true },
         });
       }
 
@@ -116,11 +187,11 @@
           const file = el.getAttribute("w3-include-html");
           if (file) {
             const xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
+            xhr.onreadystatechange = function () {
               if (this.readyState === 4) {
                 if (this.status === 200) {
                   el.innerHTML = this.responseText;
-                  const scripts = el.getElementsByTagName('script');
+                  const scripts = el.getElementsByTagName("script");
                   for (let j = 0; j < scripts.length; j++) {
                     eval(scripts[j].innerHTML);
                   }

@@ -1,12 +1,17 @@
 <style>
 .hobbies-description {
   color: #586375;
-  margin-bottom: 24px;
+  margin: 16px 0 0;
 }
 </style>
 
-<h1 class="section-title">Hobbies</h1>
-<p class="hobbies-description">
-  Most of the time, I'm busy working. But when I have free time, I enjoy reading, swimming, relaxing at the spa, cooking, and having barbeques with my friends.
-  On weekends, I love taking city breaks to see the architecture of buildings, meet new people, and have fun.
-</p>
+<div class="collapsible-header" onclick="toggleSection(this)">
+  <h1 class="section-title">Hobbies</h1>
+  <svg class="collapse-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+<div class="collapsible-body">
+  <p class="hobbies-description">
+    Most of the time, I'm busy working. But when I have free time, I enjoy reading, swimming, relaxing at the spa, cooking, and having barbeques with my friends.
+    On weekends, I love taking city breaks to see the architecture of buildings, meet new people, and have fun.
+  </p>
+</div>

@@ -4,7 +4,7 @@ ul.certificated {
   flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 16px 0 0;
   width: 100%;
 }
 
@@ -22,17 +22,29 @@ ul.certificated li:nth-last-child(-n+2) {
 }
 
 ul.certificated li div div:first-child {
+  font-size: 14px;
   font-weight: 500;
   color: #334650;
 }
 
 ul.certificated li div div:last-child {
-  color: #334650;
+  font-size: 13px;
+  color: #586375;
+  margin-top: 2px;
 }
 
 ul.certificated li a {
   color: #334650;
   text-decoration: none;
+}
+
+.cert-download {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
 }
 
 @media only screen and (max-width: 576px) {
@@ -48,76 +60,99 @@ ul.certificated li a {
 }
 </style>
 
-<h1 class="section-title">Courses & Certificates</h1>
-<ul class="certificated">
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>Docker</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>Typescript</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>NestJS</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>Jenkins</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>Angular</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>React</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>AWS</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>Vue.js</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>SQL</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-  <li>
-    <img src="/assets/certificate.webp" alt="Certificate" />
-    <div>
-      <div>GraphQL</div>
-      <div>Udemy</div>
-    </div>
-  </li>
-</ul>
+<div class="collapsible-header" onclick="toggleSection(this)">
+  <h1 class="section-title">Courses & Certificates</h1>
+  <svg class="collapse-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</div>
+<div class="collapsible-body">
+  <ul class="certificated">
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>Docker</div>
+        <div>Udemy</div>
+      </div>
+      <a class="cert-download button button-sm" href="/assets/certificates/docker-for-the-absolute-beginner-hands-on-devops.pdf" download title="Download certificate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>Typescript</div>
+        <div>Udemy</div>
+      </div>
+      <a class="cert-download button button-sm" href="/assets/certificates/typescript.pdf" download title="Download certificate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>NestJS</div>
+        <div>Udemy</div>
+      </div>
+      <a class="cert-download button button-sm" href="/assets/certificates/nestjs.pdf" download title="Download certificate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>Vue.js</div>
+        <div>Udemy</div>
+      </div>
+      <a class="cert-download button button-sm" href="/assets/certificates/vue3.pdf" download title="Download certificate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>SQL</div>
+        <div>Udemy</div>
+      </div>
+      <a class="cert-download button button-sm" href="/assets/certificates/sql-for-data-analytics-and-business-intelligence.pdf" download title="Download certificate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>GraphQL</div>
+        <div>Udemy</div>
+      </div>
+      <a class="cert-download button button-sm" href="/assets/certificates/graphql.pdf" download title="Download certificate">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>Jenkins</div>
+        <div>Udemy</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>Angular</div>
+        <div>Udemy</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>React</div>
+        <div>Udemy</div>
+      </div>
+    </li>
+    <li>
+      <img src="/assets/certificate.webp" alt="Certificate" />
+      <div>
+        <div>AWS</div>
+        <div>Udemy</div>
+      </div>
+    </li>
+  </ul>
+</div>
