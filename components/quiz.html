@@ -1,0 +1,503 @@
+<style>
+  .quiz-wrap {
+    margin-top: 16px;
+  }
+
+  .quiz-progress {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 24px;
+  }
+
+  .quiz-progress-dot {
+    height: 3px;
+    flex: 1;
+    border-radius: 2px;
+    background: #e5e7ea;
+    transition: background 0.3s;
+  }
+
+  .quiz-progress-dot.active,
+  .quiz-progress-dot.done {
+    background: #3943b7;
+  }
+
+  .quiz-step-label {
+    font-size: 11px;
+    color: #979ba6;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
+  }
+
+  .quiz-question {
+    font-size: 17px;
+    font-weight: 600;
+    color: #334650;
+    letter-spacing: -0.2px;
+    margin-bottom: 20px;
+    line-height: 24px;
+  }
+
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .quiz-options.cols-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e5e7ea;
+    border-radius: 6px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      background 0.2s,
+      color 0.2s;
+    font-size: 13px;
+    color: #586375;
+    line-height: 20px;
+    user-select: none;
+  }
+
+  .quiz-option::before {
+    content: "";
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid #c5c7d0;
+    transition:
+      background 0.2s,
+      border-color 0.2s;
+  }
+
+  .quiz-option:hover {
+    border-color: #979ba6;
+  }
+  .quiz-option:hover::before {
+    border-color: #979ba6;
+  }
+
+  .quiz-option.selected {
+    border-color: #3943b7;
+    background: #f0f1fb;
+    color: #3943b7;
+  }
+
+  .quiz-option.selected::before {
+    background: #3943b7;
+    border-color: #3943b7;
+  }
+
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .quiz-field {
+    margin-bottom: 14px;
+  }
+
+  .quiz-field label {
+    display: block;
+    font-size: 11px;
+    color: #979ba6;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+  }
+
+  .quiz-field input,
+  .quiz-field textarea {
+    width: 100%;
+    border: 1px solid #e5e7ea;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #334650;
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .quiz-field input:focus,
+  .quiz-field textarea:focus {
+    border-color: #3943b7;
+  }
+
+  .quiz-field textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .quiz-result {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .quiz-result svg {
+    color: #3943b7;
+    margin-bottom: 16px;
+  }
+
+  .quiz-result h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #334650;
+    letter-spacing: -0.2px;
+    margin-bottom: 10px;
+  }
+
+  .quiz-result p {
+    font-size: 13px;
+    color: #586375;
+    line-height: 22px;
+    margin-bottom: 24px;
+  }
+
+  .quiz-result .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .quiz-result .button svg {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .quiz-error {
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 8px;
+    display: none;
+  }
+
+  @media only screen and (max-width: 576px) {
+    .quiz-options {
+      grid-template-columns: 1fr;
+    }
+    .quiz-inline-fields {
+      flex-direction: column;
+      gap: 0 !important;
+    }
+  }
+</style>
+
+<h1 class="section-title" id="quiz-section-title"></h1>
+<p
+  id="quiz-section-subtitle"
+  style="margin-top: 8px; font-size: 13px; color: #586375; line-height: 22px"
+></p>
+
+<div class="quiz-wrap">
+  <div class="quiz-progress">
+    <div class="quiz-progress-dot active" id="quiz-dot-1"></div>
+    <div class="quiz-progress-dot" id="quiz-dot-2"></div>
+    <div class="quiz-progress-dot" id="quiz-dot-3"></div>
+    <div class="quiz-progress-dot" id="quiz-dot-4"></div>
+  </div>
+
+  <div id="quiz-step-1" class="quiz-step">
+    <p class="quiz-step-label"></p>
+    <p class="quiz-question"></p>
+    <div class="quiz-options" id="quiz-opts-1"></div>
+    <div class="quiz-nav">
+      <span></span>
+      <button class="button" onclick="window.quizNext(1)">Next</button>
+    </div>
+  </div>
+
+  <div id="quiz-step-2" class="quiz-step" style="display: none">
+    <p class="quiz-step-label"></p>
+    <p class="quiz-question"></p>
+    <div class="quiz-options" id="quiz-opts-2"></div>
+    <div class="quiz-nav">
+      <button class="button" onclick="window.quizPrev(2)">Back</button>
+      <button class="button" onclick="window.quizNext(2)">Next</button>
+    </div>
+  </div>
+
+  <div id="quiz-step-3" class="quiz-step" style="display: none">
+    <p class="quiz-step-label"></p>
+    <p class="quiz-question"></p>
+    <div class="quiz-options" id="quiz-opts-3"></div>
+    <div class="quiz-nav">
+      <button class="button" onclick="window.quizPrev(3)">Back</button>
+      <button class="button" onclick="window.quizNext(3)">Next</button>
+    </div>
+  </div>
+
+  <div id="quiz-step-4" class="quiz-step" style="display: none">
+    <p class="quiz-step-label"></p>
+    <p class="quiz-question"></p>
+    <div class="quiz-inline-fields" style="display: flex; gap: 12px">
+      <div class="quiz-field" style="flex: 1">
+        <label>Name</label>
+        <input type="text" id="quiz-name" />
+      </div>
+      <div class="quiz-field" style="flex: 1">
+        <label>Email</label>
+        <input type="email" id="quiz-email" />
+      </div>
+    </div>
+    <div class="quiz-field">
+      <label
+        >Message
+        <span
+          style="
+            color: #c5c7d0;
+            font-size: 10px;
+            text-transform: none;
+            letter-spacing: 0;
+          "
+          >(optional)</span
+        ></label
+      >
+      <textarea id="quiz-message"></textarea>
+    </div>
+    <p class="quiz-error" id="quiz-error">
+      Please fill in your name and a valid email.
+    </p>
+    <div class="quiz-nav">
+      <button class="button" onclick="window.quizPrev(4)">Back</button>
+      <button class="button" id="quiz-submit-btn" onclick="window.quizSubmit()">
+        Send
+      </button>
+    </div>
+  </div>
+
+  <div id="quiz-result" style="display: none">
+    <div class="quiz-result"></div>
+  </div>
+</div>
+
+<script>
+  (function ($) {
+    var config = {
+      title: "Let's Build Something Valuable Together",
+      subtitle:
+        "Whether you're building a new product, improving an existing system, or looking for an experienced engineer, answer 3 quick questions and let's explore the right solution.",
+
+      steps: [
+        {
+          label: "Step 1 of 3",
+          question: "What brings you here today?",
+          options: [
+            { value: "scratch", label: "Build a new product from scratch" },
+            {
+              value: "improve",
+              label: "Improve an existing system",
+            },
+            { value: "team", label: "Add an experienced engineer to my team" },
+            {
+              value: "consult",
+              label: "Architecture review or technical guidance",
+            },
+          ],
+        },
+        {
+          label: "Step 2 of 3",
+          question: "What are you building?",
+          options: [
+            { value: "saas", label: "SaaS product" },
+            { value: "ecommerce", label: "E-commerce" },
+            { value: "website", label: "Presentation website" },
+            { value: "custom", label: "Something custom" },
+          ],
+        },
+        {
+          label: "Step 3 of 3",
+          question: "Expected project duration",
+          cols: 1,
+          options: [
+            { value: "short", label: "Short-term (up to 1 month)" },
+            { value: "medium", label: "Medium-term (1–3 months)" },
+            { value: "long", label: "Long-term (3+ months)" },
+            { value: "unsure", label: "Not sure yet" },
+          ],
+        },
+      ],
+
+      contact: {
+        label: "Your details",
+        question: "Let's connect",
+        namePlaceholder: "Your name",
+        emailPlaceholder: "Work email",
+        messagePlaceholder: "Tell me a bit about your project",
+      },
+
+      success: {
+        title: "Message received",
+        message:
+          "Thank you for reaching out. I'll review your request and follow up as soon as possible.",
+        ctaLabel: "Get in touch directly",
+      },
+    };
+    // ──────────────────────────────────────────────────────────────────────────
+
+    var checkSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+
+    function buildResultHtml(title, message, ctaLabel) {
+      return (
+        checkSvg +
+        "<h3>" +
+        title +
+        "</h3>" +
+        "<p>" +
+        message +
+        "</p>" +
+        '<a class="button" href="mailto:stepanrafael@setupkit.com" style="display:inline-flex;align-items:center;gap:7px;">' +
+        ctaLabel +
+        "</a>"
+      );
+    }
+
+    // Already submitted — show static state
+    if (localStorage.getItem("quiz_submitted")) {
+      $("#quiz-section-title").hide();
+      $("#quiz-section-subtitle").hide();
+      var c = config.success;
+      $(".quiz-wrap").html(
+        '<div class="quiz-result">' +
+          buildResultHtml(c.title, c.message, c.ctaLabel) +
+          "</div>",
+      );
+      return;
+    }
+
+    // Populate header
+    $("#quiz-section-title").text(config.title);
+    $("#quiz-section-subtitle").text(config.subtitle);
+
+    // Populate steps
+    config.steps.forEach(function (step, i) {
+      var n = i + 1;
+      var $step = $("#quiz-step-" + n);
+      $step.find(".quiz-step-label").text(step.label);
+      $step.find(".quiz-question").text(step.question);
+      var $opts = $("#quiz-opts-" + n);
+      if (step.cols === 1) $opts.addClass("cols-1");
+      step.options.forEach(function (opt) {
+        $opts.append(
+          $("<div>")
+            .addClass("quiz-option")
+            .attr("data-step", n)
+            .attr("data-value", opt.value)
+            .text(opt.label),
+        );
+      });
+    });
+
+    // Populate contact step
+    $("#quiz-step-4 .quiz-step-label").text(config.contact.label);
+    $("#quiz-step-4 .quiz-question").text(config.contact.question);
+    $("#quiz-name").attr("placeholder", config.contact.namePlaceholder);
+    $("#quiz-email").attr("placeholder", config.contact.emailPlaceholder);
+    $("#quiz-message").attr("placeholder", config.contact.messagePlaceholder);
+
+    // Quiz logic
+    var quizAnswers = {};
+
+    function updateProgress(step) {
+      for (var i = 1; i <= 4; i++) {
+        var $dot = $("#quiz-dot-" + i);
+        $dot.removeClass("active done");
+        if (i < step) $dot.addClass("done");
+        else if (i === step) $dot.addClass("active");
+      }
+    }
+
+    function showStep(step) {
+      $(".quiz-step").hide();
+      $("#quiz-step-" + step).show();
+      updateProgress(step);
+    }
+
+    $(document).on("click", ".quiz-option", function () {
+      var step = $(this).data("step");
+      $("#quiz-opts-" + step + " .quiz-option").removeClass("selected");
+      $(this).addClass("selected");
+      quizAnswers["step" + step] = $(this).data("value");
+    });
+
+    window.quizNext = function (currentStep) {
+      if (!quizAnswers["step" + currentStep]) return;
+      showStep(currentStep + 1);
+    };
+
+    window.quizPrev = function (currentStep) {
+      showStep(currentStep - 1);
+    };
+
+    window.quizSubmit = function () {
+      var name = $("#quiz-name").val().trim();
+      var email = $("#quiz-email").val().trim();
+      var message = $("#quiz-message").val().trim();
+
+      if (!name || !email || !/\S+@\S+\.\S+/.test(email)) {
+        $("#quiz-error").show();
+        return;
+      }
+
+      $("#quiz-error").hide();
+      $("#quiz-submit-btn").text("Sending...").prop("disabled", true);
+
+      var stepLabels = {};
+      config.steps.forEach(function (step, i) {
+        step.options.forEach(function (opt) {
+          stepLabels[opt.value] = opt.label;
+        });
+      });
+
+      var body = [
+        "Help needed: " + (stepLabels[quizAnswers.step1] || quizAnswers.step1),
+        "Product type: " + (stepLabels[quizAnswers.step2] || quizAnswers.step2),
+        "Duration: " + (stepLabels[quizAnswers.step3] || quizAnswers.step3),
+        message ? "Message: " + message : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+
+      $.ajax({
+        url: "https://api.web3forms.com/submit",
+        method: "POST",
+        data: {
+          access_key: "df6d63c2-4caf-4dfc-a154-4f621bf1b5df",
+          name: name,
+          email: email,
+          subject: "New enquiry from " + name,
+          message: body,
+        },
+        success: function () {
+          localStorage.setItem("quiz_submitted", "true");
+          var s = config.success;
+          $("#quiz-result .quiz-result").html(
+            buildResultHtml(s.title, s.message, s.ctaLabel),
+          );
+          $(".quiz-step").hide();
+          $("#quiz-result").show();
+          updateProgress(5);
+        },
+        error: function () {
+          $("#quiz-submit-btn").text("Send").prop("disabled", false);
+          $("#quiz-error")
+            .text("Something went wrong. Please try again.")
+            .show();
+        },
+      });
+    };
+  })(jQuery);
+</script>
