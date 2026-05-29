@@ -220,15 +220,7 @@
     </div>
   </div>
 
-  <div class="portfolio-item portfolio-item-extra" onclick="openGallery('agrostoc')">
-    <div class="project">
-      <div>
-        <h3>Agrostoc</h3>
-        <p>Full-Stack Engineering & Design</p>
-      </div>
-      <img src="/assets/client-logos/agrostoc.webp" alt="Agrostoc" />
-    </div>
-  </div>
+  <!-- hidden: agrostoc -->
 
   <div class="portfolio-item portfolio-item-extra" onclick="openGallery('everestbikeshop')">
     <div class="project">
@@ -242,51 +234,6 @@
 
 </div>
 
-<div style="margin-top: 24px;">
-  <p style="font-size: 11px; line-height: 16px; color: #979BA6; text-transform: uppercase; letter-spacing: 0.4px;">Expertise</p>
-  <div class="expertise-tags" style="margin-top: 10px;">
-    <span>Front-End Engineering</span>
-    <span>Full-Stack Engineering</span>
-    <span>Software Architecture</span>
-    <span>UI/UX Design</span>
-    <span>JavaScript</span>
-    <span>TypeScript</span>
-    <span>Angular</span>
-    <span>RxJS</span>
-    <span>Node.js</span>
-    <span>D3.js</span>
-    <span>MySQL</span>
-    <span>Figma</span>
-    <span>NgRx</span>
-    <span>Nx</span>
-    <span>Git</span>
-  </div>
-
-  <p style="margin-top: 20px; font-size: 11px; line-height: 16px; color: #979BA6; text-transform: uppercase; letter-spacing: 0.4px;">Focus Areas</p>
-  <div class="expertise-tags" style="margin-top: 10px;">
-    <span>SaaS Products</span>
-    <span>Enterprise Applications</span>
-    <span>Banking & Fintech</span>
-    <span>IoT & Dashboards</span>
-    <span>Data Visualization</span>
-    <span>Real-time Systems</span>
-    <span>Logistics Systems</span>
-    <span>E-commerce</span>
-    <span>Network Graphs</span>
-  </div>
-
-  <p style="margin-top: 20px; font-size: 11px; line-height: 16px; color: #979BA6; text-transform: uppercase; letter-spacing: 0.4px;">Methodologies</p>
-  <div class="expertise-tags" style="margin-top: 10px;">
-    <span>Agile / Scrum</span>
-    <span>Component Architecture</span>
-    <span>REST APIs</span>
-    <span>WebSockets</span>
-    <span>CI/CD</span>
-    <span>Responsive Design</span>
-    <span>Third-party Integrations</span>
-    <span>Software Design Patterns</span>
-  </div>
-</div>
 
 <script>
   window.expandPortfolio = function() {
@@ -296,113 +243,4 @@
     document.getElementById('portfolio-view-more').style.display = 'none';
   };
 
-  window.gallery = {
-    "synexio": [
-      { "src": "/assets/portofolio/synexio/line-config.webp",         "thumb": "/assets/portofolio/synexio/line-config.png" },
-      { "src": "/assets/portofolio/synexio/power-consumption.webp",   "thumb": "/assets/portofolio/synexio/power-consumption.webp" },
-      { "src": "/assets/portofolio/synexio/troubleshoot.webp",        "thumb": "/assets/portofolio/synexio/troubleshoot.webp" },
-      { "src": "/assets/portofolio/synexio/machine-utilization.webp", "thumb": "/assets/portofolio/synexio/machine-utilization.webp" },
-      { "src": "/assets/portofolio/synexio/production-archive.webp",  "thumb": "/assets/portofolio/synexio/production-archive.webp" },
-      { "src": "/assets/portofolio/synexio/machine-status.webp",      "thumb": "/assets/portofolio/synexio/machine-status.webp" },
-      { "src": "/assets/portofolio/synexio/sustainability.webp",      "thumb": "/assets/portofolio/synexio/sustainability.webp" },
-      { "src": "/assets/portofolio/synexio/dialog.webp",              "thumb": "/assets/portofolio/synexio/dialog.webp" },
-      { "src": "/assets/portofolio/synexio/report1.webp",             "thumb": "/assets/portofolio/synexio/report1.webp" },
-      { "src": "/assets/portofolio/synexio/report2.webp",             "thumb": "/assets/portofolio/synexio/report2.webp" },
-      { "src": "/assets/portofolio/synexio/report.webp",              "thumb": "/assets/portofolio/synexio/report.webp" }
-    ],
-    "inombra": [
-      { "src": "/assets/portofolio/inombra/dashboard.webp",      "thumb": "/assets/portofolio/inombra/dashboard.png" },
-      { "src": "/assets/portofolio/inombra/dashboard2.webp",     "thumb": "/assets/portofolio/inombra/dashboard2.webp" },
-      { "src": "/assets/portofolio/inombra/master-search.webp",  "thumb": "/assets/portofolio/inombra/master-search.webp" },
-      { "src": "/assets/portofolio/inombra/calendar.webp",       "thumb": "/assets/portofolio/inombra/calendar.webp" },
-      { "src": "/assets/portofolio/inombra/calendar2.webp",      "thumb": "/assets/portofolio/inombra/calendar2.webp" },
-      { "src": "/assets/portofolio/inombra/book.webp",           "thumb": "/assets/portofolio/inombra/book.webp" },
-      { "src": "/assets/portofolio/inombra/cart.webp",           "thumb": "/assets/portofolio/inombra/cart.webp" },
-      { "src": "/assets/portofolio/inombra/quotes.webp",         "thumb": "/assets/portofolio/inombra/quotes.webp" },
-      { "src": "/assets/portofolio/inombra/description2.webp",   "thumb": "/assets/portofolio/inombra/description2.webp" },
-      { "src": "/assets/portofolio/inombra/cart-item.webp",      "thumb": "/assets/portofolio/inombra/cart-item.webp" },
-      { "src": "/assets/portofolio/inombra/dynamic-fields.webp", "thumb": "/assets/portofolio/inombra/dynamic-fields.webp" },
-      { "src": "/assets/portofolio/inombra/file-manager.webp",   "thumb": "/assets/portofolio/inombra/file-manager.webp" },
-      { "src": "/assets/portofolio/inombra/upload-files.webp",   "thumb": "/assets/portofolio/inombra/upload-files.webp" },
-      { "src": "/assets/portofolio/inombra/preview-files.webp",  "thumb": "/assets/portofolio/inombra/preview-files.webp" }
-    ],
-    "zetasafe": [
-      { "src": "/assets/portofolio/zetasafe/widgets.webp",    "thumb": "/assets/portofolio/zetasafe/widgets.webp" },
-      { "src": "/assets/portofolio/zetasafe/dashboard1.webp", "thumb": "/assets/portofolio/zetasafe/dashboard1.webp" },
-      { "src": "/assets/portofolio/zetasafe/dashboard2.webp", "thumb": "/assets/portofolio/zetasafe/dashboard2.webp" },
-      { "src": "/assets/portofolio/zetasafe/chart1.webp",     "thumb": "/assets/portofolio/zetasafe/chart1.webp" },
-      { "src": "/assets/portofolio/zetasafe/explorer.webp",   "thumb": "/assets/portofolio/zetasafe/explorer.webp" },
-      { "src": "/assets/portofolio/zetasafe/licences.webp",   "thumb": "/assets/portofolio/zetasafe/licences.webp" }
-    ],
-    "spinoffintelligence": [
-      { "src": "/assets/portofolio/spinoffintelligence/homepage.webp",  "thumb": "/assets/portofolio/spinoffintelligence/homepage.webp" },
-      { "src": "/assets/portofolio/spinoffintelligence/about.webp",     "thumb": "/assets/portofolio/spinoffintelligence/about.webp" },
-      { "src": "/assets/portofolio/spinoffintelligence/solutions.webp", "thumb": "/assets/portofolio/spinoffintelligence/solutions.webp" },
-      { "src": "/assets/portofolio/spinoffintelligence/graph1.webp",    "thumb": "/assets/portofolio/spinoffintelligence/graph1.webp" },
-      { "src": "/assets/portofolio/spinoffintelligence/graph2.webp",    "thumb": "/assets/portofolio/spinoffintelligence/graph2.webp" }
-    ],
-    "netsheet": [
-      { "src": "/assets/portofolio/netsheet/homepage.webp",             "thumb": "/assets/portofolio/netsheet/homepage.webp" },
-      { "src": "/assets/portofolio/netsheet/dashboard.webp",            "thumb": "/assets/portofolio/netsheet/dashboard.webp" },
-      { "src": "/assets/portofolio/netsheet/landingpage-settings.webp", "thumb": "/assets/portofolio/netsheet/landingpage-settings.webp" },
-      { "src": "/assets/portofolio/netsheet/seller-estimate.webp",      "thumb": "/assets/portofolio/netsheet/seller-estimate.webp" },
-      { "src": "/assets/portofolio/netsheet/profile.webp",              "thumb": "/assets/portofolio/netsheet/profile.webp" },
-      { "src": "/assets/portofolio/netsheet/widget.webp",               "thumb": "/assets/portofolio/netsheet/widget.webp" },
-      { "src": "/assets/portofolio/netsheet/widget-placeholder.webp",   "thumb": "/assets/portofolio/netsheet/widget-placeholder.webp" },
-      { "src": "/assets/portofolio/netsheet/widget-buyer.webp",         "thumb": "/assets/portofolio/netsheet/widget-buyer.webp" },
-      { "src": "/assets/portofolio/netsheet/widget-seller.webp",        "thumb": "/assets/portofolio/netsheet/widget-seller.webp" }
-    ],
-    "seeqchat": [
-      { "src": "/assets/portofolio/seeqchat/seeqchat6.webp", "thumb": "/assets/portofolio/seeqchat/seeqchat6.webp" },
-      { "src": "/assets/portofolio/seeqchat/seeqchat4.webp", "thumb": "/assets/portofolio/seeqchat/seeqchat4.webp" },
-      { "src": "/assets/portofolio/seeqchat/seeqchat5.webp", "thumb": "/assets/portofolio/seeqchat/seeqchat5.webp" }
-    ],
-    "modpack": [
-      { "src": "/assets/portofolio/modpack/modpack1.webp", "thumb": "/assets/portofolio/modpack/modpack1.webp" },
-      { "src": "/assets/portofolio/modpack/modpack2.webp", "thumb": "/assets/portofolio/modpack/modpack2.webp" },
-      { "src": "/assets/portofolio/modpack/modpack3.webp", "thumb": "/assets/portofolio/modpack/modpack3.webp" },
-      { "src": "/assets/portofolio/modpack/modpack4.webp", "thumb": "/assets/portofolio/modpack/modpack4.webp" },
-      { "src": "/assets/portofolio/modpack/modpack5.webp", "thumb": "/assets/portofolio/modpack/modpack5.webp" },
-      { "src": "/assets/portofolio/modpack/modpack6.webp", "thumb": "/assets/portofolio/modpack/modpack6.webp" }
-    ],
-    "agrostoc": [
-      { "src": "/assets/portofolio/agrostoc/agrostoc1.webp", "thumb": "/assets/portofolio/agrostoc/agrostoc1.webp" },
-      { "src": "/assets/portofolio/agrostoc/agrostoc2.webp", "thumb": "/assets/portofolio/agrostoc/agrostoc2.webp" },
-      { "src": "/assets/portofolio/agrostoc/agrostoc3.webp", "thumb": "/assets/portofolio/agrostoc/agrostoc3.webp" },
-      { "src": "/assets/portofolio/agrostoc/agrostoc4.webp", "thumb": "/assets/portofolio/agrostoc/agrostoc4.webp" },
-      { "src": "/assets/portofolio/agrostoc/agrostoc5.webp", "thumb": "/assets/portofolio/agrostoc/agrostoc5.webp" }
-    ],
-    "everestbikeshop": [
-      { "src": "/assets/portofolio/everestbikeshop/homepage.webp", "thumb": "/assets/portofolio/everestbikeshop/homepage.webp" },
-      { "src": "/assets/portofolio/everestbikeshop/products.webp", "thumb": "/assets/portofolio/everestbikeshop/products.webp" },
-      { "src": "/assets/portofolio/everestbikeshop/product.webp",  "thumb": "/assets/portofolio/everestbikeshop/product.webp" },
-      { "src": "/assets/portofolio/everestbikeshop/cart.webp",     "thumb": "/assets/portofolio/everestbikeshop/cart.webp" }
-    ],
-    "upick": [
-      { "src": "/assets/portofolio/upick/homepage.webp", "thumb": "/assets/portofolio/upick/homepage.webp" }
-    ],
-    "equeum": [
-      { "src": "/assets/portofolio/equeum/equeum.webp", "thumb": "/assets/portofolio/equeum/equeum.webp" }
-    ],
-    "setupkit": [
-      { "src": "https://www.youtube.com/embed/B84RGDGASMc" },
-      { "src": "/assets/portofolio/setupkit/homepage.webp",                     "thumb": "/assets/portofolio/setupkit/homepage.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-homepage.webp",         "thumb": "/assets/portofolio/setupkit/setupkit-v3-homepage.webp" },
-      { "src": "/assets/portofolio/setupkit/login.webp",                        "thumb": "/assets/portofolio/setupkit/login.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-signin.webp",           "thumb": "/assets/portofolio/setupkit/setupkit-v3-signin.webp" },
-      { "src": "/assets/portofolio/setupkit/file-hosting.webp",                 "thumb": "/assets/portofolio/setupkit/file-hosting.webp" },
-      { "src": "/assets/portofolio/setupkit/file-hosting-2.webp",               "thumb": "/assets/portofolio/setupkit/file-hosting-2.webp" },
-      { "src": "/assets/portofolio/setupkit/messenger.webp",                    "thumb": "/assets/portofolio/setupkit/messenger.webp" },
-      { "src": "/assets/portofolio/setupkit/messenger-2.webp",                  "thumb": "/assets/portofolio/setupkit/messenger-2.webp" },
-      { "src": "/assets/portofolio/setupkit/tickets.webp",                      "thumb": "/assets/portofolio/setupkit/tickets.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-dashboards.webp",       "thumb": "/assets/portofolio/setupkit/setupkit-v3-dashboards.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-filehosting.webp",      "thumb": "/assets/portofolio/setupkit/setupkit-v3-filehosting.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-forums.webp",           "thumb": "/assets/portofolio/setupkit/setupkit-v3-forums.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-messenger.webp",        "thumb": "/assets/portofolio/setupkit/setupkit-v3-messenger.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-projectmanagement.webp","thumb": "/assets/portofolio/setupkit/setupkit-v3-projectmanagement.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-teammanagement.webp",   "thumb": "/assets/portofolio/setupkit/setupkit-v3-teammanagement.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-tickets.webp",          "thumb": "/assets/portofolio/setupkit/setupkit-v3-tickets.webp" },
-      { "src": "/assets/portofolio/setupkit/setupkit-v3-timetracker.webp",      "thumb": "/assets/portofolio/setupkit/setupkit-v3-timetracker.webp" }
-    ]
-  };
 </script>
